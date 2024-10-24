@@ -1,0 +1,262 @@
+/* WeatherDashboard.css */
+:root {
+    --bg-color: #f3f4f6;
+    --text-color: #1f2937;
+    --card-bg-color: #ffffff;
+    --card-text-color: #1f2937;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1f2937;
+    --text-color: #f3f4f6;
+    --card-bg-color: #13141999;
+    --card-text-color: #f3f4f6;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Hide scrollbars while maintaining scroll functionality */
+/* For Webkit browsers (Chrome, Safari, newer versions of Edge) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Hide scrollbars for specific elements */
+.card,
+.card-content,
+.dashboard-card,
+.max-height-150px {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbars for specific elements in Webkit browsers */
+.card::-webkit-scrollbar,
+.card-content::-webkit-scrollbar,
+.dashboard-card::-webkit-scrollbar,
+.max-height-150px::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    overflow: hidden;
+    max-width: 100%;
+    height: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+}
+
+.threshold-input {
+    width: 125px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #cccccc;
+    transition: border-color 0.3s ease;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.threshold-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    /* Light blue for focus effect */
+}
+
+/* Threshold Select Styles */
+.threshold-select {
+    width: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #cccccc;
+    transition: border-color 0.3s ease;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.threshold-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+/* React Grid Layout Styles */
+.react-grid-layout {
+    position: relative;
+    transition: height 200ms ease;
+    background: transparent;
+}
+
+.react-grid-item {
+    transition: all 200ms ease;
+    transition-property: left, top, width, height;
+    background: var(--card-bg-color);
+}
+
+.react-grid-item.cssTransforms {
+    transition-property: transform, width, height;
+}
+
+.react-grid-item.resizing {
+    z-index: 1;
+    will-change: width, height;
+}
+
+.react-grid-item.react-draggable-dragging {
+    transition: none;
+    z-index: 3;
+    will-change: transform;
+    cursor: move;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* CSS to make specific areas non-draggable */
+.non-draggable {
+    pointer-events: auto;
+    /* Ensure pointer events are enabled */
+    user-select: none;
+}
+
+
+.react-grid-item>.react-resizable-handle {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: se-resize;
+    z-index: 10;
+}
+
+.react-grid-item>.react-resizable-handle::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+    opacity: 0.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .react-grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Modified input styles to allow text input */
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Chart container adjustments */
+.recharts-wrapper {
+    min-height: 200px;
+}
+
+/* Ensure cards fill grid items */
+.react-grid-item>.card {
+    height: calc(100% - 10px);
+    margin: 5px;
+}
+
+/* Smooth theme transition */
+.card,
+.react-grid-item {
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .recharts-cartesian-grid-horizontal line,
+[data-theme="dark"] .recharts-cartesian-grid-vertical line {
+    stroke: #4b5563;
+}
+
+[data-theme="dark"] .recharts-text {
+    fill: #f3f4f6;
+}
+
+[data-theme="dark"] .recharts-legend-item-text {
+    color: #f3f4f6 !important;
+}
+
+.glassmorphism {
+    background: var(--card-bg-color);
+    border-radius: 20px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Light Theme */
+.light .glassmorphism {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Dark Theme */
+.dark .glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.legend-bg {
+    background-color: var(--card-bg-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Compass Container */
+.compass-container {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Compass Arrow */
+.compass-icon {
+    display: inline-block;
+    color: #ff000d;
+    transition: transform 0.5s ease;
+}
+
+/* Direction Labels */
+.compass-container span {
+    color: #dac3c3;
+    font-size: 1.1rem;
+}
