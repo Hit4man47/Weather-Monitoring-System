@@ -13,7 +13,7 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
 
 1. **Real-Time Data Collection**:
    - Continuous retrieval of weather data for Indian metros: Delhi, Mumbai, Chennai, Bangalore, Kolkata, and Hyderabad.
-   - Fetches current temperature, perceived temperature, humidity, wind speed, and main weather conditions at configurable intervals (default: 5 minutes).
+   - Fetches current temperature, perceived temperature, humidity, wind speed, and main weather conditions at configurable intervals.
 
 2. **Data Processing & Aggregation**:
    - Converts temperature values from Kelvin to Celsius (or Fahrenheit based on user preference).
