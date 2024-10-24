@@ -13,7 +13,7 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
 
 1. **Real-Time Data Collection**:
    - Continuous retrieval of weather data for Indian metros: Delhi, Mumbai, Chennai, Bangalore, Kolkata, and Hyderabad.
-   - Fetches current temperature, perceived temperature, humidity, wind speed, and main weather conditions at configurable intervals.
+   - Fetches current temperature, perceived temperature, humidity, wind speed, and main weather conditions at configurable intervals (default: 5 minutes).
 
 2. **Data Processing & Aggregation**:
    - Converts temperature values from Kelvin to Celsius (or Fahrenheit based on user preference).
@@ -73,6 +73,7 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
 
 - Node.js (>=14.x)
 - MongoDB instance
+- **Docker**: Required to set up and run MongoDB container.
 - OpenWeatherMap API Key (sign up [here](https://openweathermap.org/) to get a free API key)
 - Git
 
@@ -85,14 +86,24 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
    cd <repository_name>
    ```
 
-2. **Install server dependencies**:
+2. **Pull Docker Image**
+   ```bash
+   docker pull hit4man47/weather-mongo-image:latest
+   ```
+
+3. **Run the Docker Container**
+   ```bash
+   docker run -d -p 27017:27017 --name weather-mongo-db hit4man47/weather-mongo-image:latest
+   ```
+
+4. **Install server dependencies**:
    
    ```bash
    cd server
    npm install
    ```
 
-3. **Set up environment variables**:
+5. **Set up environment variables**:
    
    Create a `.env` file in the `server` directory with the following values:
 
@@ -105,26 +116,26 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
    ALERT_EMAIL_RECIPIENT=<alert_recipient_email>
    ```
 
-4. **Start the server**:
+6. **Start the server**:
    
    ```bash
    npm start
    ```
 
-5. **Install client dependencies**:
+7. **Install client dependencies**:
    
    ```bash
    cd ../client
    npm install
    ```
 
-6. **Run the client**:
+8. **Run the client**:
    
    ```bash
    npm run dev
    ```
 
-7. **Access the application**:
+9. **Access the application**:
    
    Open your browser and navigate to `http://localhost:5173`.
 
@@ -141,6 +152,26 @@ This project is a **Real-Time Data Processing System for Weather Monitoring** de
 - `PUT /api/alerts/threshold/:id`: Update an existing threshold.
 - `DELETE /api/alerts/threshold/:id`: Delete an alert threshold.
 - `PUT /api/alerts/acknowledge/:id`: Acknowledge an alert.
+
+## Docker Commands
+- Pull Image: 
+   ```bash
+   docker pull hit4man47/weather-mongo-image:latest
+   ```
+- Run Container:
+   ```bash
+   docker run -d -p 27017:27017 --name weather-mongo-db hit4man47/weather-mongo-image:latest
+   ```
+- Stop Container:
+   ```bash
+   docker stop weather-mongo-db
+   ```
+- Remove container:
+   ```bash
+   docker rm weather-mongo-db
+   ```
+
+
 
 ## Design Choices
 
